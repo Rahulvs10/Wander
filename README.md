@@ -20,10 +20,10 @@ Ever wanted memories to spring out whenever you visit a place close to your hear
 Open the Wander directory in Android Studio to build the application.
 
 ### Setting up the Server
+Install [Django](https://docs.djangoproject.com/en/2.2/topics/install/)
 
 1. `cd server`
-2. `npm install`
-3. `npm start`
+2. `python manage.py runserver`
 
 
 ## Issue management
