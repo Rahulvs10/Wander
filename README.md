@@ -14,7 +14,7 @@ Ever wanted memories to spring out whenever you visit a place close to your hear
 ## Installation
 
 1. `git clone https://github.com/Rahulvs10/Wander`
-2. `cd Wander`
+2. `Build Wander/Android in Android Studio`
 
 ### Building the app
 Open the Wander directory in Android Studio to build the application.
