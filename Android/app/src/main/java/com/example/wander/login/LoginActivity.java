@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.wander.home.HomeActivity;
+import com.example.wander.MainActivity;
 import com.example.wander.R;
 import com.example.wander.signup.SignupActivity;
 
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void navigateToHome() {
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 
     @Override
