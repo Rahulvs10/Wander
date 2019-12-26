@@ -250,4 +250,7 @@
         <item>Zambia</item>
         <item>Zimbabwe</item>
     </string-array>
+
+    <string name="open_camera">Open Camera</string>
+    <string name="logout">Logout</string>
 </resources>
