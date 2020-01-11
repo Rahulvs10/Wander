@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.wander.feed.FeedFragment;
 import com.example.wander.home.HomeFragment;
@@ -60,5 +61,10 @@ public class MainActivity extends AppCompatActivity {
         {
             return this.fragments.size();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(),"Click on the logout button",Toast.LENGTH_SHORT).show();
     }
 }
