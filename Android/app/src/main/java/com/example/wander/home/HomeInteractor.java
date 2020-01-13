@@ -1,8 +1,8 @@
 package com.example.wander.home;
 
 
+import android.graphics.Bitmap;
 import android.os.Handler;
-import android.widget.ImageView;
 
 public class HomeInteractor {
 
@@ -12,12 +12,12 @@ public class HomeInteractor {
         void onFailure();
     }
 
-    void storeImage(ImageView imageView,final onImageStoredListener listener) {
+    void storeImage(Bitmap capturedImage, final onImageStoredListener listener) {
         Handler handler = new Handler();
         //Database storage operation , call onSuccess() on successful storage of the image else call onFailure()
         handler.postDelayed(()->{
             if (true) {
-                //Store the imageView in Database
+                //Store the capturedImage in the database
 
                 listener.onSuccess();
                 return;

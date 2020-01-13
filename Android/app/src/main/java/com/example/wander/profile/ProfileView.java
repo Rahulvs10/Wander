@@ -14,6 +14,8 @@ public interface ProfileView {
 
     void showSuccessfulUpdate();
 
+    void logout();
+
     void showErrorText();
 
     void hideErrorText();

@@ -1,5 +1,6 @@
 package com.example.wander.profile;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,6 +32,8 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.wander.R;
+import com.example.wander.login.LoginActivity;
+import com.example.wander.settings.Account;
 import com.example.wander.settings.Activity;
 import com.example.wander.settings.Privacy;
 import com.example.wander.settings.Recovery;
@@ -50,14 +54,10 @@ public class ProfileFragment extends Fragment implements ProfileView{
     private ProgressBar progressBar;
     private ViewPager settings;
 
-    private TextView name;
-    private TextView age;
-    private TextView gender;
-    private EditText et_name;
-    private EditText et_age;
+    private TextView name,age,gender,errorText;
+    private EditText et_name,et_age;
     private RadioGroup rd_gender;
-    private TextView errorText;
-    private Button save;
+    private Button save,logout;
     private int person_gender = -1; //0->no gender, 1->male, 2->female, -1->no option selected(invalid)
 
     public ProfileFragment() {
@@ -93,6 +93,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
         progressBar = view.findViewById(R.id.progress);
         errorText = view.findViewById(R.id.errorText);
         save = view.findViewById(R.id.btn_save);
+        logout = view.findViewById(R.id.logout);
 
 
         btn_edit.setOnCheckedChangeListener((compoundButton, isChecked) -> {
@@ -102,6 +103,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
                 makeInvisible();
             }
         });
+
 
         rd_gender.setOnCheckedChangeListener((radioGroup, checkedID) -> {
             switch (checkedID) {
@@ -118,6 +120,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
         });
 
         save.setOnClickListener(v->updateProfileInfo());
+        logout.setOnClickListener(v->logout());
 
         fillfriendsList();
         setUpRecyclerView();
@@ -145,6 +148,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
     private List<Fragment> getFragments() {
         List<Fragment> fList = new ArrayList<>();
         fList.add(new Activity());
+        fList.add(new Account());
         fList.add(new Privacy());
         fList.add(new Recovery());
         fList.add(new Theme());
@@ -282,6 +286,18 @@ public class ProfileFragment extends Fragment implements ProfileView{
         makeInvisible();
         btn_edit.setChecked(false);
 
+    }
+
+
+    @Override
+    public void logout() {
+        try {
+            getActivity().finishAffinity();
+        }catch (NullPointerException e) {
+            Log.d("Logout exception", "Error while logging out");
+            return;
+        }
+        startActivity(new Intent(getContext(), LoginActivity.class));
     }
 
     @Override

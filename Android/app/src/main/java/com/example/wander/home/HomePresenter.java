@@ -1,6 +1,6 @@
 package com.example.wander.home;
 
-import android.widget.ImageView;
+import android.graphics.Bitmap;
 
 public class HomePresenter implements HomeInteractor.onImageStoredListener {
 
@@ -12,11 +12,11 @@ public class HomePresenter implements HomeInteractor.onImageStoredListener {
         this.homeInteractor = homeInteractor;
     }
 
-    public void storeImage(ImageView imageView) {
+    public void storeImage(Bitmap capturedImage) {
         if (homeView != null) {
             homeView.showProgress();
         }
-        homeInteractor.storeImage(imageView,this);
+        homeInteractor.storeImage(capturedImage,this);
     }
 
     public void onDestroy(){
