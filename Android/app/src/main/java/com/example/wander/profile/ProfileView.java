@@ -10,6 +10,8 @@ public interface ProfileView {
 
     void setAgeError();
 
+    void setGenderError();
+
     void showSuccessfulUpdate();
 
     void showErrorText();

@@ -58,7 +58,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
     private RadioGroup rd_gender;
     private TextView errorText;
     private Button save;
-    private int person_gender = 0; //0->no gender, 1->male, 2->female
+    private int person_gender = -1; //0->no gender, 1->male, 2->female, -1->no option selected(invalid)
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -268,6 +268,11 @@ public class ProfileFragment extends Fragment implements ProfileView{
     @Override
     public void setAgeError() {
         et_age.setError("Age field cannot be empty!");
+    }
+
+    @Override
+    public void setGenderError() {
+        gender.setError("Gender not specified!");
     }
 
 

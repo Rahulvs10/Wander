@@ -11,6 +11,8 @@ public class ProfileInteractor {
 
         void onAgeError();
 
+        void onGenderError();
+
         void onSuccess();
 
         void onFailure();
@@ -27,6 +29,11 @@ public class ProfileInteractor {
             }
             if (TextUtils.isEmpty(age)) {
                 listener.onAgeError();
+                return;
+            }
+
+            if (gender == -1) {
+                listener.onGenderError();
                 return;
             }
 

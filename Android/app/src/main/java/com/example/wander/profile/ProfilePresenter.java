@@ -40,6 +40,14 @@ public class ProfilePresenter implements ProfileInteractor.OnUpdateFinishedListe
     }
 
     @Override
+    public void onGenderError() {
+        if(profileView!=null){
+            profileView.setGenderError();
+            profileView.hideProgress();
+        }
+    }
+
+    @Override
     public void onSuccess() {
         if(profileView!=null){
             profileView.showSuccessfulUpdate();

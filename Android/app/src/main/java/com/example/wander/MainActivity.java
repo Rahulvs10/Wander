@@ -64,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(),"Click on the logout button",Toast.LENGTH_SHORT).show();
     }
