@@ -2,11 +2,16 @@ package com.example.wander.profile;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,6 +30,10 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.wander.R;
+import com.example.wander.settings.Activity;
+import com.example.wander.settings.Privacy;
+import com.example.wander.settings.Recovery;
+import com.example.wander.settings.Theme;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +48,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
     private ToggleButton btn_edit;
     private ProfilePresenter presenter;
     private ProgressBar progressBar;
+    private ViewPager settings;
 
     private TextView name;
     private TextView age;
@@ -84,6 +94,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
         errorText = view.findViewById(R.id.errorText);
         save = view.findViewById(R.id.btn_save);
 
+
         btn_edit.setOnCheckedChangeListener((compoundButton, isChecked) -> {
             if (isChecked){
                 makeVisible();
@@ -115,10 +126,51 @@ public class ProfileFragment extends Fragment implements ProfileView{
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //Settings View Pager
+        List<Fragment> fragments = getFragments();
+        MyPageAdapter pageAdapter = new MyPageAdapter(getChildFragmentManager(), fragments);
+        settings = view.findViewById(R.id.other_settings);
+        settings.setAdapter(pageAdapter);
+    }
+
+    @Override
     public void onDestroy() {
         presenter.onDestroy();
         super.onDestroy();
     }
+
+    private List<Fragment> getFragments() {
+        List<Fragment> fList = new ArrayList<>();
+        fList.add(new Activity());
+        fList.add(new Privacy());
+        fList.add(new Recovery());
+        fList.add(new Theme());
+        return fList;
+    }
+
+    private class MyPageAdapter extends FragmentPagerAdapter {
+        private List<Fragment> fragments;
+
+        public MyPageAdapter(FragmentManager fm, List<Fragment> fragments ) {
+            super(fm);
+            this.fragments = fragments;
+        }
+        @Override
+        public Fragment getItem(int position)
+        {
+            return this.fragments.get(position);
+        }
+
+        @Override
+        public int getCount()
+        {
+            return this.fragments.size();
+        }
+    }
+
 
     private void fillfriendsList() {
         friendsList = new ArrayList<>();
