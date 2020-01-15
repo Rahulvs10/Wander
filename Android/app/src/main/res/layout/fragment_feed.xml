@@ -1,16 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".feed.FeedFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:textStyle="bold"
-        android:text="Feed fragment" />
+        android:textSize="25sp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:text="Feeds"/>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/world_map"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/map_of_the_world"/>
+
+    <Switch
+        android:id="@+id/type_of_posts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:text="Switch to Public posts" />
+
+
+<!--  Recycler view for friends posts  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/friends_feeds_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+<!--  Recycler view for public posts  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/public_feeds_recycler"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>
