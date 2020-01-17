@@ -5,8 +5,9 @@ public class FeedInteractor {
     private int id,likes,profile_pic,posted_pic,comments;
     String name,time,status;
     private int type_of_posts; //0=>friend's posts, 1=>public posts
+    boolean liked_before = false; //To know if the post was liked by the user before
 
-    public FeedInteractor(int id, int likes, int profile_pic, int posted_pic, int comments, String name, String time, String status,int type_of_posts) {
+    public FeedInteractor(int id, int likes, int profile_pic, int posted_pic, int comments, String name, String time, String status,int type_of_posts,boolean liked_before) {
         this.id = id;
         this.likes = likes;
         this.profile_pic = profile_pic;
@@ -15,6 +16,15 @@ public class FeedInteractor {
         this.name = name;
         this.time = time;
         this.status = status;
+        this.liked_before = liked_before;
+    }
+
+    public boolean isLiked_before() {
+        return liked_before;
+    }
+
+    public void setLiked_before(boolean liked_before) {
+        this.liked_before = liked_before;
     }
 
     public int getId() {

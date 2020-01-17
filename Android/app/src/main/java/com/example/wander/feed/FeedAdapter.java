@@ -57,6 +57,15 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         //Load the image into the image view corresponding to profile pic
         glide.load(feedInteractor.getProfile_pic()).into(holder.profile_pic);
 
+        holder.like_button_image.setOnClickListener(view -> {
+            //Increment the number of likes only if the post was not liked before
+            if (!feedInteractor.isLiked_before()) {
+                feedInteractor.setLikes(feedInteractor.getLikes() + 1);
+                holder.likes.setText(String.valueOf(feedInteractor.getLikes()));
+                feedInteractor.setLiked_before(true);
+            }
+        });
+
         //Check if there is an image in database and accordingly populate the image view corresponding to posted_pic
         if (feedInteractor.getPosted_pic() == 0) {
             holder.posted_pic.setVisibility(View.GONE);
@@ -75,7 +84,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     public class FeedViewHolder extends RecyclerView.ViewHolder {
 
         TextView name,timestamp,likes,comments, status;
-        ImageView profile_pic,posted_pic;
+        ImageView profile_pic,posted_pic,like_button_image;
 
         public FeedViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +97,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             likes = itemView.findViewById(R.id.tv_likes);
             comments = itemView.findViewById(R.id.tv_comments);
             status = itemView.findViewById(R.id.tv_status);
+            like_button_image = itemView.findViewById(R.id.like_img);
 
         }
     }

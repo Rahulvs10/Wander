@@ -268,4 +268,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="map_of_the_world">Map of the world</string>
+    <string name="account">Account</string>
+    <string name="change_password">Change Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="add_your_email_address">Add your email address</string>
+    <string name="email_address">Email address</string>
+    <string name="abc_xyz_com">abc@xyz.com</string>
+    <string name="other_settings">Other Settings</string>
 </resources>

@@ -1,23 +1,17 @@
 package com.example.wander.feed;
 
-import android.content.Context;
-import android.net.Uri;
+
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import com.example.wander.R;
 
@@ -94,15 +88,15 @@ public class FeedFragment extends Fragment {
 
 
     private void fillFriendsFeedRecycler() {
-        FeedInteractor feedItem = new FeedInteractor(1,7,R.drawable.profile_pic,R.drawable.img1,14,"Manish","3 hrs", "Time's ticking!",0);
+        FeedInteractor feedItem = new FeedInteractor(1,7,R.drawable.profile_pic,R.drawable.img1,14,"Manish","3 hrs", "Time's ticking!",0,false);
         feedInteractorArrayList.add(feedItem);
 
-        feedItem = new FeedInteractor(3,16,R.drawable.profile_pic,R.drawable.img3,24,"Manish","1 hrs", "Octopus invasion!!",0);
+        feedItem = new FeedInteractor(3,16,R.drawable.profile_pic,R.drawable.img3,24,"Manish","1 hrs", "Octopus invasion!!",0,false);
         feedInteractorArrayList.add(feedItem);
     }
 
     private void fillPublicFeedRecycler() {
-        FeedInteractor feedItem = new FeedInteractor(2,26,R.drawable.profile_pic,R.drawable.img2,10,"Manish","2 hrs", "#Photography",1);
+        FeedInteractor feedItem = new FeedInteractor(2,26,R.drawable.profile_pic,R.drawable.img2,10,"Manish","2 hrs", "#Photography",1,false);
         feedInteractorArrayList.add(feedItem);
     }
 }

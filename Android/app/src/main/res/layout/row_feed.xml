@@ -144,6 +144,7 @@
                 android:layout_centerInParent="true">
                 
                 <ImageView
+                    android:id="@+id/like_img"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:adjustViewBounds="true"

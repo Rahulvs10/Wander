@@ -33,11 +33,11 @@ import android.widget.ToggleButton;
 
 import com.example.wander.R;
 import com.example.wander.login.LoginActivity;
-import com.example.wander.settings.Account;
-import com.example.wander.settings.Activity;
-import com.example.wander.settings.Privacy;
-import com.example.wander.settings.Recovery;
-import com.example.wander.settings.Theme;
+import com.example.wander.profile.settings.Account.Account;
+import com.example.wander.profile.settings.Activity;
+import com.example.wander.profile.settings.Privacy;
+import com.example.wander.profile.settings.Recovery;
+import com.example.wander.profile.settings.Theme;
 
 import java.util.ArrayList;
 import java.util.List;

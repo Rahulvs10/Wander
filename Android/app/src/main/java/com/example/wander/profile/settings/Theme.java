@@ -1,5 +1,4 @@
-package com.example.wander.settings;
-
+package com.example.wander.profile.settings;
 
 import android.os.Bundle;
 
@@ -11,10 +10,10 @@ import android.view.ViewGroup;
 
 import com.example.wander.R;
 
-public class Activity extends Fragment {
 
+public class Theme extends Fragment {
 
-    public Activity() {
+    public Theme() {
         // Required empty public constructor
     }
 
@@ -29,8 +28,6 @@ public class Activity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_activity, container, false);
+        return inflater.inflate(R.layout.fragment_theme, container, false);
     }
-
-
 }

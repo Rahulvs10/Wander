@@ -1,4 +1,4 @@
-package com.example.wander.settings;
+package com.example.wander.profile.settings;
 
 import android.os.Bundle;
 
@@ -10,22 +10,25 @@ import android.view.ViewGroup;
 
 import com.example.wander.R;
 
-public class Account extends Fragment {
 
-    public Account() {
+public class Privacy extends Fragment {
+
+
+    public Privacy() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+        return inflater.inflate(R.layout.fragment_privacy, container, false);
     }
+
 }
