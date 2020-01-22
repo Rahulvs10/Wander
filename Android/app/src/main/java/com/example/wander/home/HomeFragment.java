@@ -1,13 +1,19 @@
 package com.example.wander.home;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,33 +52,24 @@ public class HomeFragment extends Fragment implements HomeView{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        cameraKitView = view.findViewById(R.id.camera);
+        captureImage = view.findViewById(R.id.capture_image);
+        switch_camera = view.findViewById(R.id.switch_camera_facing);
+        preview_img = view.findViewById(R.id.img_preview);
+        zoomed_img = view.findViewById(R.id.zoomed_image);
         progressBar = view.findViewById(R.id.progress);
         presenter = new HomePresenter(this,new HomeInteractor());
         switch_camera.setOnClickListener(v->SwitchFacing());
         preview_img.setOnClickListener(v->zoom());
 
         captureImage.setOnClickListener(v->ImageCapture());
-        cameraKitView.setGestureListener(new CameraKitView.GestureListener() {
-            @Override
-            public void onTap(CameraKitView cameraKitView, float v, float v1) {
 
-            }
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) !=
+                PackageManager.PERMISSION_GRANTED) {
 
-            @Override
-            public void onLongTap(CameraKitView cameraKitView, float v, float v1) {
-
-            }
-
-            @Override
-            public void onDoubleTap(CameraKitView cameraKitView, float v, float v1) {
-
-            }
-
-            @Override
-            public void onPinch(CameraKitView cameraKitView, float v, float v1, float v2) {
-
-            }
-        });
+            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA},
+                    50);
+        }
     }
 
 
@@ -81,13 +78,8 @@ public class HomeFragment extends Fragment implements HomeView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        cameraKitView = view.findViewById(R.id.camera);
-        captureImage = view.findViewById(R.id.capture_image);
-        switch_camera = view.findViewById(R.id.switch_camera_facing);
-        preview_img = view.findViewById(R.id.img_preview);
-        zoomed_img = view.findViewById(R.id.zoomed_image);
-        return view;
+
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
@@ -98,8 +90,10 @@ public class HomeFragment extends Fragment implements HomeView{
 
     @Override
     public void onResume() {
-        super.onResume();
         cameraKitView.onResume();
+        super.onResume();
+        Log.d("Camera","Camera has been resumed");
+        SwitchFacing();
     }
 
     @Override
@@ -147,7 +141,9 @@ public class HomeFragment extends Fragment implements HomeView{
             presenter.storeImage(bitmap_preview);
 
         });
+
     }
+
 
     @Override
     public void showProgress() {

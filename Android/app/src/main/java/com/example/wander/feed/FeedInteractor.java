@@ -1,101 +1,35 @@
 package com.example.wander.feed;
 
+import java.util.ArrayList;
+import android.os.Handler;
+
 public class FeedInteractor {
 
-    private int id,likes,profile_pic,posted_pic,comments;
-    String name,time,status;
-    private int type_of_posts; //0=>friend's posts, 1=>public posts
-    boolean liked_before = false; //To know if the post was liked by the user before
+    interface onPostsFetchedListener {
+        void onSuccess(int type);
 
-    public FeedInteractor(int id, int likes, int profile_pic, int posted_pic, int comments, String name, String time, String status,int type_of_posts,boolean liked_before) {
-        this.id = id;
-        this.likes = likes;
-        this.profile_pic = profile_pic;
-        this.posted_pic = posted_pic;
-        this.comments = comments;
-        this.name = name;
-        this.time = time;
-        this.status = status;
-        this.liked_before = liked_before;
+        void onFailure();
     }
 
-    public boolean isLiked_before() {
-        return liked_before;
-    }
+    void fetchPosts(ArrayList<FeedItem> feedItemArrayList,int type_of_post, final onPostsFetchedListener listener) {
 
-    public void setLiked_before(boolean liked_before) {
-        this.liked_before = liked_before;
-    }
+        Handler handler = new Handler();
+        handler.postDelayed(()->{
+            //Fetch the posts from the database and add it to the feedItemArrayList
+            //If there is an error,display onFailure() else onSuccess()
 
-    public int getId() {
-        return id;
-    }
+            if (type_of_post == 0){
+                //Fetch friends posts
+                listener.onSuccess(0);
+                return;
+            } else if(type_of_post == 1) {
+                //Fetch public posts
+                listener.onSuccess(1);
+                return;
+            }
+            listener.onFailure();
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
-
-    public int getProfile_pic() {
-        return profile_pic;
-    }
-
-    public void setProfile_pic(int profile_pic) {
-        this.profile_pic = profile_pic;
-    }
-
-    public int getPosted_pic() {
-        return posted_pic;
-    }
-
-    public void setPosted_pic(int posted_pic) {
-        this.posted_pic = posted_pic;
-    }
-
-    public int getComments() {
-        return comments;
-    }
-
-    public void setComments(int comments) {
-        this.comments = comments;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public int getType_of_posts() {
-        return type_of_posts;
-    }
-
-    public void setType_of_posts(int type_of_posts) {
-        this.type_of_posts = type_of_posts;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
+        },1000);
     }
 }

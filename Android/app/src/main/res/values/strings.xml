@@ -265,8 +265,7 @@
     <string name="no_gender">Rather not specify</string>
     <string name="save">Save</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="map_of_the_world">Map of the world</string>
     <string name="account">Account</string>
     <string name="change_password">Change Password</string>
@@ -276,4 +275,22 @@
     <string name="email_address">Email address</string>
     <string name="abc_xyz_com">abc@xyz.com</string>
     <string name="other_settings">Other Settings</string>
+
+
+    <string name="title_activity_map">Map</string>
+    <string name="google_maps_api_key">Your API Key Here</string>
+
+    <string name="privacy">Privacy</string>
+    <string name="who_can_see_your_email_address">Who can see your email address</string>
+    <string name="who_can_follow_you">Who can follow you</string>
+    <string name="search_history">Search History</string>
+    <string name="feeds">Feeds</string>
+    <string name="switch_to_public_posts">Switch to Public posts</string>
+    <string name="profile">Profile</string>
+    <string name="camera">Camera</string>
+    <string name="posts">Posts</string>
+    <string name="wander_map">Wander Map</string>
+    <string name="click">Click</string>
+
+
 </resources>

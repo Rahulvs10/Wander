@@ -14,15 +14,15 @@
         android:textSize="25sp"
         android:layout_marginTop="5dp"
         android:layout_gravity="center"
-        android:text="Feeds"/>
+        android:text="@string/feeds"/>
 
-    <ImageView
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@drawable/world_map"
-        android:layout_marginTop="5dp"
-        android:contentDescription="@string/map_of_the_world"/>
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
 
     <Switch
         android:id="@+id/type_of_posts"
@@ -31,7 +31,7 @@
         android:layout_gravity="right"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:text="Switch to Public posts" />
+        android:text="@string/switch_to_public_posts" />
 
 
 <!--  Recycler view for friends posts  -->

@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,18 +14,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.example.wander.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
 
     Context context;
-    ArrayList<FeedInteractor> feedInteractorArrayList;
+    ArrayList<FeedItem> feedInteractorArrayList;
     RequestManager glide;
     int switch_status; //0=>friend's posts, 1=>public posts
-    int type_of_posts; //0=>friend's posts, 1=>public posts
 
-    public FeedAdapter(Context context, ArrayList<FeedInteractor> feedInteractorArrayList,int switch_status) {
+    public FeedAdapter(Context context, ArrayList<FeedItem> feedInteractorArrayList, int switch_status) {
         this.context = context;
         this.feedInteractorArrayList = feedInteractorArrayList;
         this.switch_status = switch_status;
@@ -45,7 +42,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull FeedViewHolder holder, int position) {
-        final FeedInteractor feedInteractor = feedInteractorArrayList.get(position);
+        final FeedItem feedInteractor = feedInteractorArrayList.get(position);
 
         holder.name.setText(feedInteractor.getName());
         holder.timestamp.setText(feedInteractor.getTime());
@@ -64,6 +61,10 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
                 holder.likes.setText(String.valueOf(feedInteractor.getLikes()));
                 feedInteractor.setLiked_before(true);
             }
+        });
+
+        holder.comments.setOnClickListener(view -> {
+            //Open comments section here for the corresponding post
         });
 
         //Check if there is an image in database and accordingly populate the image view corresponding to posted_pic

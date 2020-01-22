@@ -34,7 +34,6 @@ import android.widget.ToggleButton;
 import com.example.wander.R;
 import com.example.wander.login.LoginActivity;
 import com.example.wander.profile.settings.Account.Account;
-import com.example.wander.profile.settings.Activity;
 import com.example.wander.profile.settings.Privacy;
 import com.example.wander.profile.settings.Recovery;
 import com.example.wander.profile.settings.Theme;
@@ -59,6 +58,8 @@ public class ProfileFragment extends Fragment implements ProfileView{
     private RadioGroup rd_gender;
     private Button save,logout;
     private int person_gender = -1; //0->no gender, 1->male, 2->female, -1->no option selected(invalid)
+    private ArrayList<String> search_history = new ArrayList<>(); //To keep a track of the search history
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -147,7 +148,6 @@ public class ProfileFragment extends Fragment implements ProfileView{
 
     private List<Fragment> getFragments() {
         List<Fragment> fList = new ArrayList<>();
-        fList.add(new Activity());
         fList.add(new Account());
         fList.add(new Privacy());
         fList.add(new Recovery());
@@ -210,6 +210,7 @@ public class ProfileFragment extends Fragment implements ProfileView{
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                search_history.add(query);
                 return false;
             }
 
