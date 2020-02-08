@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".feed.FeedFragment">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:text="@string/feeds"/>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
+
+    <Switch
+        android:id="@+id/type_of_posts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:text="@string/switch_to_public_posts" />
+
+
+<!--  Recycler view for friends posts  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/friends_feeds_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+<!--  Recycler view for public posts  -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/public_feeds_recycler"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

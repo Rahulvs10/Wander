@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.wander.MainActivity;
 import com.example.wander.R;
+import com.example.wander.signup.SignupActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView{
 
@@ -38,6 +39,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         presenter = new LoginPresenter(this, new LoginInteractor());
 
         loginButton.setOnClickListener(view -> validateCredentials());
+
+        signUp.setOnClickListener(view -> navigateToSignUp());
 
     }
 
@@ -84,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
 
     @Override
     public void navigateToSignUp() {
-        //start new activity for signup
+        startActivity(new Intent(this, SignupActivity.class));
     }
 
     public void validateCredentials(){

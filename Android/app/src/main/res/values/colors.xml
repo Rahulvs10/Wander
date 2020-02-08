@@ -6,4 +6,5 @@
     <color name="linkColor">#0A7FF9</color>
     <color name="logoColor">#CF1749</color>
     <color name="errorColor">#F92731</color>
+    <color name="Black">#000000</color>
 </resources>
